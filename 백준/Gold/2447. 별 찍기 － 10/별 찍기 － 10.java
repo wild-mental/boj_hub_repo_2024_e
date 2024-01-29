@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -16,7 +14,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int threePower = Integer.parseInt(br.readLine().strip());
         // ShortCut
-        if (threePower == 3) { printResult(unit); return; }
+        if (threePower == 3) { printResult(unit); return;}
         // 거듭 제곱 계산
         int power = 0;
         do {
@@ -59,13 +57,15 @@ public class Main {
         }
         return newUnit;
     }
-    static void printResult(int[][] canvas) {
+    static void printResult(int[][] canvas) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         for (int[] row: canvas) {
-            System.out.println(
-                    Arrays.stream(row)
-                          .mapToObj(num-> num == 1? "*": " ")
-                          .collect(Collectors.joining())
-            );
+            for (int num: row){
+                if (num == 1) bw.write("*");
+                else bw.write(" ");
+            }
+            bw.write("\n");
         }
+        bw.flush();
     }
 }
