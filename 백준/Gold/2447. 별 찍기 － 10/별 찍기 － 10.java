@@ -1,12 +1,10 @@
 import java.io.*;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class Main {
     static int[][] unit = {
-            new int[] {1,1,1},
-            new int[] {1,0,1},
-            new int[] {1,1,1}
+            {1,1,1},
+            {1,0,1},
+            {1,1,1}
     };
     static int unitLv = 1;
     public static void main(String[] args) throws IOException {
@@ -35,9 +33,9 @@ public class Main {
 //        System.out.printf("shift:%d newSize:%d \n", shift, newSize);
         int[][] newUnit = new int[newSize][newSize];
         int[][] indexShifter = {
-            new int[] {0,0}, new int[] {0,1}, new int[] {0,2},
-            new int[] {1,0},                  new int[] {1,2},
-            new int[] {2,0}, new int[] {2,1}, new int[] {2,2},
+            {0,0},{0,1},{0,2},
+            {1,0},      {1,2},
+            {2,0},{2,1},{2,2},
         };
         // 기존 유닛 내부의 모든 좌표를 순회 하면서
         for (int i=0; i<unit.length; i++){
